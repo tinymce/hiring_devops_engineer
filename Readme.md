@@ -13,7 +13,8 @@ You need to do the following:
 2. Install vagrant if you do not already have it available: https://www.vagrantup.com/
 
 3. Using a provisioning system of your choice do the following: This
-   is where you show us what you can do:
+is where you show us what you can do: Please note to use the provided
+Vagrantfile as the base file, and dont create a new one
 
     1. Secure the machine using industry best practice security. Port 8009
     is required for the application server to be accessible. Assume
