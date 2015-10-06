@@ -16,7 +16,9 @@ You need to do the following:
    is where you show us what you can do:
 
     1. Secure the machine using industry best practice security. Port 8009
-    is required for the application server to be accessible.
+    is required for the application server to be accessible. Assume
+    that this server will be a publically accessible server that runs
+    inside a cloud provider. SSH should be properly secured.
     2. Set the hostname of the machine to something creative. 
     3. Run the application in the application directory automatically
        on machine boot. 
