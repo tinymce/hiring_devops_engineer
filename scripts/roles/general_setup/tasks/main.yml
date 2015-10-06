@@ -1,0 +1,6 @@
+---
+# File: /etc/ansible/roles/template/tasks/main.yml
+- include: configure_user.yml
+- include: setup_ssh.yml
+- include: common_applications.yml 
+- include: firewall.yml

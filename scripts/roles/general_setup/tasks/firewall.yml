@@ -1,0 +1,36 @@
+---
+# File: general_setup/tasks/firewall.yml
+
+- name: Copy configuration file for Scala app
+  copy:
+    src: scala.firewall
+    dest: /etc/ufw/applications.d/scala
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Copy configuration file for OpenSSH
+  copy:
+    src: ssh.firewall
+    dest: /etc/ufw/applications.d/openssh-server
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Allow wanted ports
+  ufw:
+    direction: in
+    rule: allow
+    name: "{{ item }}"
+  with_items:
+  - OpenSSH
+  - Scala
+
+- name: Block all unused ports
+  ufw:
+    direction: in
+    rule: deny
+
+- name: Reload firewall
+  ufw:
+    state: enabled

@@ -1,0 +1,29 @@
+---
+# tasks file for scala
+
+- name: Install prerequisites required for Scala jar
+  apt:
+    name: "{{item}}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - openjdk-7-jre
+  tags:
+    - scala
+
+- name: Create directory for app
+  file:
+    path: "/var/scala/"
+    owner: "scala"
+    group: "scala"
+    state: "directory"
+    recurse: true
+
+
+- name: Copy the scala app
+  copy:
+    src: ../../../../application/ts-assembly-1.0.0.jar
+    dest: /var/scala/ts-assembly-1.0.0.jar
+    owner: "scala"
+    group: "scala"

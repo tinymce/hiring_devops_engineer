@@ -1,0 +1,4 @@
+[Scala]
+title=Scala Test App
+description=Scala Test App.
+ports=8009/tcp

@@ -1,0 +1,13 @@
+[Unit]
+Description=Scala App
+After=syslog.target network.target
+
+[Service]
+User=scala
+Type=notify
+Restart=always
+ExecStart=/usr/bin/java -jar /var/scala/ts-assembly-1.0.0.jar
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

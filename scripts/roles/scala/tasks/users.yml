@@ -1,0 +1,8 @@
+---
+# tasks file for scala
+- name: Create Scala user for app
+  user: 
+    name: scala
+    createhome: no
+    state: present
+    system: yes

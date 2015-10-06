@@ -1,0 +1,4 @@
+---
+# File: /etc/ansible/roles/general_setup/handlers/main.yml
+- name: restart ssh
+  service: name=sshd state=restarted

@@ -1,0 +1,21 @@
+---
+# File: /etc/ansible/roles/general_setup/tasks/common_applications.yml
+
+- name: Install common applications
+  apt:
+    name: "{{item}}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - fail2ban
+    - molly-guard
+  tags:
+    - general-software
+
+- name: Ensure all packages are up to date
+  apt: 
+    upgrade: dist
+    state: latest
+  tags:
+    - update

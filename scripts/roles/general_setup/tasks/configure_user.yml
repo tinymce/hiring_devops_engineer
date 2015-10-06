@@ -1,0 +1,29 @@
+---
+# File: /etc/ansible/roles/general_setup/tasks/configure_user.yml
+
+- name: Change the Vagrant user password to 'lookatme'
+  user:
+    name: vagrant
+    password: '$6$rounds=656000$BaeYQjhf0mefAMJT$Q.DJo7aLQGEw.s9j15fFsiHyVvieEnxYUiXVSl2R1Dp7sUrCRk0M1MZAkZ3p5Y0bcDKs22dFeBtfCjjmXTa8H1'
+
+- name: Copy over a new SSH key into authorized_keys
+  authorized_key:
+    key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDcJmRgGZ7CNCN6Q5CI/cqr7EUzZreZ6ZF1/IrEEmjDsVudfnAeUSA7I1F2D11gz1FXMpUlbbLyiIHkWa3fLn51L6rHYgXjyf4BYbsQok2I1fBl9kGg8UDyZ7AzF9tvv4sTOwQsIdDCKH5ycRMQYi2WodNkgKXVF9Jh+R1Hw1GxXYXPk1xxyBNXlHSu2syGG6uswZJCoBRlCJA17TcLeoyMxlP801t50pdqf9PoOmiVTi+L7n26+1dEwXwnoaJQmsKW3ozgQtDli0LTs65jVNDqMOF4tzQs1e0EG6JI8+9H/LBPVkrfQ8eLUwUuk8Q+M8y+g4n4pQR2GrvCMuPgbLS/ubHhGo1bgBx+gaBDMWTOqhd1iKE/DFB13sSqHEpqCAK5HzLA2RPWz/Sw+64vO/2a/EETFDOJbZFcZr51BV71h967718XsOhlWQtTMtSvpwIVHfTqMnGt89pnI7y+z11vMpiOpWb2ND/dqoDJ+gDWG0Dv+4uVRHQ17o5Y8ORmj499qHO8gxQmgsEw6GxYFqVqxMrMFbUpm2NSAzuJ1dsqaMtkjEElAQIPy5HdgjzhaZu4YlZ18TBeMl03A6PD1yz7E/2kMPkSWuf7VgyrDLyyepMgl9bYLQkqiRHYGpkvGgD5c174aEaMFIkO3woDy5lbPclW08mH97J7NfQydvlMEw== vagrant'
+    state: present
+    user: vagrant
+
+- name: Configure .profile to show time and date in history
+  lineinfile: 
+    state: present 
+    regexp: '^export HISTTIMEFORMAT' 
+    insertafter: EOF 
+    line: 'export HISTTIMEFORMAT="%d/%m/%y %T "' 
+    dest: /home/vagrant/.profile
+
+- name: Force sudo password for Vagrant user
+  lineinfile:
+    state: present
+    regexp: '^vagrant'
+    insertafter: EOF
+    line: 'vagrant ALL=(ALL:ALL) ALL'
+    dest: /etc/sudoers.d/vagrant

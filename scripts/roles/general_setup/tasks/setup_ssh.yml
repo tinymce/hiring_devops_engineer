@@ -1,0 +1,25 @@
+---
+# File: /etc/ansible/roles/general_setup/tasks/setup_ssh.yml
+
+- name: forbid root login
+  lineinfile: 
+    state: present 
+    regexp: '^PermitRootLogin' 
+    insertafter: '^LoginGraceTime'
+    line: 'PermitRootLogin no'
+    dest: /etc/ssh/sshd_config 
+    backup: yes
+  notify:
+    - restart ssh
+
+- name: forbid password login
+  lineinfile: 
+    state: present 
+    regexp: '^PasswordAuthentication' 
+    insertafter: '^LoginGraceTime' 
+    line: 'PasswordAuthentication no' 
+    dest: /etc/ssh/sshd_config 
+    backup: yes
+  notify:
+    - restart ssh
+

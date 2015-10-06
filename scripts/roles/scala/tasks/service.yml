@@ -1,0 +1,14 @@
+---
+# tasks file for scala
+
+- name: Upload the scala service script
+  copy:
+    src: scala.service
+    dest: /lib/systemd/system/scala.service
+    backup: yes
+
+- name: Start the scala service and start on boot
+  service:
+    name: "scala"
+    state: "started"
+    enabled: true

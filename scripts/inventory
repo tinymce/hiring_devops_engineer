@@ -1,0 +1,7 @@
+[all:vars]
+ansible_ssh_host=localhost
+ansible_ssh_user=vagrant
+ansible_ssh_port=2222
+
+[mrmeseeks.lookatme]
+mrmeseeks.lookatme

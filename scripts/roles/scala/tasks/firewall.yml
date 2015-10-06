@@ -1,0 +1,6 @@
+---
+# tasks file for scala
+
+- include: users.yml
+- include: software.yml
+- include: service.yml
