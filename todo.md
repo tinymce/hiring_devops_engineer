@@ -12,14 +12,14 @@
 ~~set app server to start on reboot~~
 
 ### firewall
-determine best solution for industry best practice for this application
-fail2ban
+~~determine best solution for industry best practice for this application~~
+~~fail2ban~~
 ~~block inbound except 22 (ssh) & 8009 (application)~~
-block outbound except 80 and 443 (aptitude)
-implement solution
+~~block outbound except 80 and 443 (aptitude)~~
+~~implement solution~~
 
 ###Things to Investigate
-setup testing for the 3 provided API endpoints
+~~setup testing for the 3 provided API endpoints (no supplied way to run with vagrants chef-solo)~~
 setup endpoints for monitoring
 
 ### Issues
