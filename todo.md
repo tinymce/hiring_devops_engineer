@@ -20,8 +20,10 @@
 
 ###Things to Investigate
 ~~setup testing for the 3 provided API endpoints (no supplied way to run with vagrants chef-solo)~~
-setup endpoints for monitoring
+
+###Update Readme
+~~update readme with basic instructions~~
 
 ### Issues
-If VM reboots vagrant directory does not relink
-(sort of fixed, vm doesn't rely on shared storage anymore)
+~~If VM reboots vagrant directory does not relink~~
+(fixed in vagrant 1.7.4 https://github.com/mitchellh/vagrant/commit/300b9c910954bf0e6beed0888e121473639ef2c8)

@@ -1,6 +1,7 @@
 # Cookbook Name:: chef_scala_ephox
 # Recipe:: user
 
+# create application user group
 group node['chef_scala_ephox']['app_group']
 
 #create the application user
