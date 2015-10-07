@@ -2,11 +2,11 @@
 description "Upstart Service to run java app"
 author "Thomas Taege"
 
-start on runlevel [3]
+start on (local-filesystems and net-device-up IFACE!=lo)
 stop on shutdown
 
-setuid root
-setgid root
+setuid <%= node['chef_scala_ephox']['app_user'] %>
+setgid <%= node['chef_scala_ephox']['app_group'] %>
 
 expect fork
 

@@ -15,8 +15,8 @@ include_recipe 'apt::default'
 #installs the JRE
 include_recipe 'java::default'
 
+# create application user
+include_recipe 'chef_scala_ephox::user'
+
 #create and then run the service
 include_recipe 'chef_scala_ephox::appserver'
-
-# create scala user
-#include_recipe 'chef_scala_ephox::user'

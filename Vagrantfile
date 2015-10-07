@@ -16,6 +16,9 @@ Vagrant.configure(2) do |config|
   # using a specific IP.
   config.vm.network "private_network", ip: "192.168.33.10"
 
+  #set local private key (specific to this repo as it is public), do not use on an internet facing server
+  #config.ssh.private_key_path = "scripts/id_rsa"
+
   #No need to specify synced folders, vagrant sync's the entire folder to /vagrant
 
   # Enable provisioning with a shell script. Additional provisioners such as
