@@ -8,6 +8,8 @@ version '0.1.0'
 
 depends 'java', '~> 1.35.0'
 depends 'apt', '~> 2.8.2'
+depends 'openssh', '~> 1.5.2'
+depends 'firewall', '~> 1.5.0'
 #depends 'users', '~> 1.8.2'
 #depends 'sudo', '~> 2.7.2'
 #depends 'iptables', '~> 1.1.0'

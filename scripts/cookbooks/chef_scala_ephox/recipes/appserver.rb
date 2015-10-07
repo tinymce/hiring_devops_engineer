@@ -10,15 +10,14 @@ execute "copy java application" do
 end
 
 template "javaapp.conf" do
-    path "/etc/init/javaapp.conf"
-    source "javaapp.conf.erb"
-    owner "root"
-    group "root"
-    mode "0755"
+  path "/etc/init/javaapp.conf"
+  source "javaapp.conf.erb"
+  owner "root"
+  group "root"
+  mode "0755"
 end
 
 service "javaapp" do
   supports :restart => true, :start => true, :stop => true, :reload => true
   action [ :enable, :start ]
-  subscribes :restart, "template[javaapp.conf]", :immediately
 end
