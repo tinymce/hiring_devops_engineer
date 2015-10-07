@@ -8,6 +8,8 @@ include_recipe 'openssh::default'
 include_recipe 'firewall::default'
 #set custom firewall rules
 include_recipe 'chef_scala_ephox::firewall'
+#setup fail2ban
+include_recipe 'fail2ban::default'
 
 # update installed packages through apt (default cookbook)
 include_recipe 'apt::default'

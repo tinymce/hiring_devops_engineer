@@ -11,6 +11,13 @@
 ~~setup app server for scala app~~
 ~~set app server to start on reboot~~
 
+### firewall
+determine best solution for industry best practice for this application
+fail2ban
+~~block inbound except 22 (ssh) & 8009 (application)~~
+block outbound except 80 and 443 (aptitude)
+implement solution
+
 ###Things to Investigate
 setup testing for the 3 provided API endpoints
 setup endpoints for monitoring
