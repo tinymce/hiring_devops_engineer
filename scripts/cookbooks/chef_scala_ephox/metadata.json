@@ -1,0 +1,33 @@
+{
+  "name": "chef_scala_ephox",
+  "description": "Installs/Configures chef_scala_ephox",
+  "long_description": "Installs/Configures chef_scala_ephox",
+  "maintainer": "Thomas Taege",
+  "maintainer_email": "thomas.taege@gmail.com",
+  "license": "all_rights",
+  "platforms": {
+  },
+  "dependencies": {
+    "java": "~> 1.35.0",
+    "apt": "~> 2.8.2"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0",
+  "source_url": "",
+  "issues_url": ""
+}

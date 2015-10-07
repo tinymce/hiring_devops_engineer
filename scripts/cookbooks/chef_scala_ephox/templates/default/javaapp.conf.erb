@@ -1,0 +1,14 @@
+# /etc/init/javaapp.conf
+description "Upstart Service to run java app"
+author "Thomas Taege"
+
+start on runlevel [3]
+stop on shutdown
+
+expect fork
+
+script
+   cd /opt/application
+   java -jar ts-assembly-1.0.0.jar
+   emit javaapp_running
+end script
