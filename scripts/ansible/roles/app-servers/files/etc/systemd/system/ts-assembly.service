@@ -1,0 +1,13 @@
+[Unit]
+Description=Ephox ts-assembly java app
+After=network.target
+
+[Service]
+Type=simple
+User=ts-assembly
+Group=ts-assembly
+
+ExecStart=/usr/bin/java -jar /usr/local/bin/ts-assembly-1.0.0.jar
+
+[Install]
+WantedBy=multi-user.target

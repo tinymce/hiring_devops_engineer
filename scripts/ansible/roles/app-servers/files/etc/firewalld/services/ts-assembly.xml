@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Ephox ts-assemble</short>
+  <description>A java app for testing.</description>
+  <port protocol="tcp" port="8009"/>
+</service>

@@ -4,3 +4,4 @@
   roles:
     - ansible-rhel-cis
     - all-servers
+    - app-servers

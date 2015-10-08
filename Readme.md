@@ -37,3 +37,19 @@ local network.
    directory
 
 6. Issue a pull request when you are done, so we can look at the solution.
+
+-----------------------------------------------------------------------------
+
+HI Ephox,
+
+This is up and running. Just a few notes:
+
+- I've forked and modified an existing github repo which attempts to implement the CIS benchmarks using ansible. The ansible-rhel-cis role still needs quite a bit of cleaning up - there's a lot of RHEL 6 bits and some of the CIS tests and mitigations have been implemented incorrectly. It's definitely not production ready but the important parts are working.
+- For item 4, you'll need to use the IP (192.168.0.2) from the Vagrant host rather than the hostname because (unless you want to make some DNS or hosts file changes around the office)
+
+There's a couple of other security configurations that would be worthwhile (in addition to the ansible-rhel-cis role cleanup), such as:
+- SSH key authentication would be preferable and SSH should be restricted by IP
+- The Aide database should be on read only storage
+- Logs should go to a seperate log server
+
+Enjoy the weekend!

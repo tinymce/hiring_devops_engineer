@@ -1,0 +1,42 @@
+- name: install Java 7
+  yum: name=java-1.7.0-openjdk.x86_64 state=present
+
+- name: create a user to run the app as
+  user: >
+    name=ts-assembly 
+    uid=100 comment="User for running Ephox ts-assembly java app" 
+    shell=/sbin/nologin 
+    password=! 
+    home=/var/lib/ts-assembly 
+    state=present
+
+- name: install the ts-assembly app
+  copy: >
+    src=../files/usr/local/bin/ts-assembly-1.0.0.jar 
+    dest=/usr/local/bin/ts-assembly-1.0.0.jar 
+    owner=root 
+    group=root 
+    mode=0644
+
+- name: install the systemd service file
+  copy: >
+    src=../files/etc/systemd/system/ts-assembly.service 
+    dest=/etc/systemd/system/ts-assembly.service 
+    owner=root 
+    group=root 
+    mode=0644
+
+- name: enable the ts-assembly service at boot and make sure it's running now
+  service: name=ts-assembly enabled=yes state=started
+
+- name: install the firewalld service file
+  copy: >
+    src=../files/etc/firewalld/services/ts-assembly.xml
+    dest=/etc/firewalld/services/ts-assembly.xml
+    owner=root 
+    group=root 
+    mode=0640
+  notify: reload firewalld
+
+- name: allow ts-assembly through firewall in the default zone
+  shell: /bin/firewall-cmd --reload && /bin/firewall-cmd --permanent --add-service=ts-assembly
