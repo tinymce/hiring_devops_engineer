@@ -1,0 +1,2 @@
+- name: install default firewalld configuration
+  include: firewalld.yml

@@ -1,0 +1,9 @@
+- name: install the default firewalld public zone file (SSH only)
+  copy: >
+    src=../files/etc/firewalld/zones/public.xml
+    dest=/etc/firewalld/zones/public.xml
+    owner=root
+    group=root
+    mode=0644
+  notify:
+    - reload firewalld
