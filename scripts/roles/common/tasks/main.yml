@@ -1,0 +1,17 @@
+---
+     # throwing in an update first since we're running puppet's 6.6 centos. 
+     # I would assume that ephox has their own box image which is kept patched and up to date?
+    - name: update all packages
+      yum: name=* state=latest
+      become: yes
+      become_method: sudo
+
+    - name: Set Hostname
+      hostname: name=scalaserver
+      become: yes
+      become_method: sudo
+
+    - name: Set ip address in hosts file
+      lineinfile: dest=/etc/hosts line="{{ ansible_eth1["ipv4"]["address"] }} scalaserver" owner=root group=root mode=0644
+      become: yes
+      become_method: sudo
