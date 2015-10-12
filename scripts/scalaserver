@@ -31,7 +31,7 @@ start() {
         touch $LOG_FILE
         touch $PID_FILE
         chown $USER $LOG_FILE $PID_FILE
-
+	# Run the program as the given user, NOT ROOT!
         /bin/su $USER -c "$JAVA_BIN $JAVA_OPTS -jar $JAR_FULLPATH $JAR_OPTS >> $LOG_FILE &"
         pgrep -f "java" > $PID_FILE
 
