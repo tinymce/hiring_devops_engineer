@@ -69,7 +69,7 @@ Vagrant.configure(2) do |config|
   #
   # ENABLE PROVISIONING WITH ANSIBLE
   config.vm.provision "ansible" do |ansible|
-    ansible.sudo = true
+    #ansible.sudo = true
     ansible.playbook = "scripts/scaladeployment.yml"
   end
 end
