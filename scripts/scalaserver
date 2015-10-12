@@ -1,0 +1,81 @@
+#!/bin/bash
+#
+# Runs the scala server
+# description: scala server
+
+# Source function library.
+. /etc/init.d/functions
+
+# Set up Variables
+USER="vagrant"
+SERVICE_NAME="scalaserver"
+JAVA_BIN="/usr/bin/java"
+JAVA_OPTS=""
+JAR_PATH="/scala/application"
+JAR_FILE="ts-assembly-1.0.0.jar"
+JAR_OPTS=""
+LOG_FILE="/var/log/scalaserver"
+PID_FILE="/var/run/scalaserver"
+
+######################################
+
+JAR_FULLPATH="$JAR_PATH/$JAR_FILE"
+
+start() {
+	echo -en "Starting $SERVICE_NAME\n"
+	if [ -f $PID_FILE ]; then
+		echo "$SERVICE_NAME already running.\n"
+		exit 1
+	fi
+	cd $JAR_PATH
+        touch $LOG_FILE
+        touch $PID_FILE
+        chown $USER $LOG_FILE $PID_FILE
+	# Run the program as the given user, NOT ROOT!
+        /bin/su $USER -c "$JAVA_BIN $JAVA_OPTS -jar $JAR_FULLPATH $JAR_OPTS >> $LOG_FILE &"
+        pgrep -f "java" > $PID_FILE
+
+
+}	
+
+stop() {
+	echo -en "Shutting down $SERVICE_NAME\n"
+	if [ -f $PID_FILE ]; then
+		kill `cat $PID_FILE`
+		rm -f $PID_FILE
+		return 1
+	else
+		echo -en "PID not found, are you sure its running?\n"
+	fi
+}
+
+case "$1" in
+    start)
+	start
+	;;
+    stop)
+	stop
+	;;
+    status)
+	if [ -f $PID_FILE ]; then
+		PID=`cat $PID_FILE`
+                echo -en "$SERVICE_NAME is running with pid $PID\n"
+                exit 0;
+
+	else
+       		echo -en "$SERVICE_NAME is not running\n"
+		exit 0;
+	fi
+
+	;;
+    restart)
+    	stop
+	start
+	;;
+    *)
+	echo -en "Usage: $SERVICE_NAME {start|stop|status|restart}\n"
+	exit 1
+	;;
+esac
+exit $?
+

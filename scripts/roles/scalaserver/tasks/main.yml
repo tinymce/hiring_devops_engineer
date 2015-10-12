@@ -1,0 +1,40 @@
+---
+    - name: Copy firewall rules
+      copy: src=iptables dest=/etc/sysconfig/iptables owner=root group=root mode=0600
+      become: yes
+      become_method: sudo
+
+
+    - name: Restart iptables
+      service: name=iptables state=restarted
+      become: yes
+      become_method: sudo
+
+
+    - name: Install other apps from Yum repos
+      yum: name={{ item }} state=latest
+      with_items:
+      - java-1.7.0-openjdk
+      - git
+      become: yes
+      become_method: sudo
+
+    - name: Create directory for app
+      file: path=/scala state=directory owner=vagrant group=vagrant mode=0700
+      become: yes
+      become_method: sudo
+
+
+    - name: Pull the scala app from GIT
+      git: repo=https://github.com/laurieodgers/hiring_devops_engineer.git dest=/scala
+
+    - name: copy scalaserver service
+      copy: src=scalaserver dest=/etc/init.d/scalaserver owner=root group=root mode=0755
+      become: yes
+      become_method: sudo
+
+    - name: Run the scala service
+      service: name=scalaserver state=started
+      become: yes
+      become_method: sudo
+
