@@ -1,0 +1,1 @@
+ssh -i scripts/id_rsa vagrant@192.168.33.10

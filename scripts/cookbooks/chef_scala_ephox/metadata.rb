@@ -1,0 +1,13 @@
+name 'chef_scala_ephox'
+maintainer 'Thomas Taege'
+maintainer_email 'thomas.taege@gmail.com'
+license 'all_rights'
+description 'Installs/Configures chef_scala_ephox'
+long_description 'Installs/Configures chef_scala_ephox'
+version '0.1.0'
+
+depends 'java', '~> 1.35.0'
+depends 'apt', '~> 2.8.2'
+depends 'openssh', '~> 1.5.2'
+depends 'firewall', '~> 1.5.0'
+depends 'fail2ban', '~> 2.3.0'
