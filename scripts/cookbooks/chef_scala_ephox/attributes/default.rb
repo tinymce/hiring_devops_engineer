@@ -1,4 +1,5 @@
 #config variables - change to suit your requirements
+default['chef_scala_ephox']['app_name'] = 'ts-assembly-1.0.0.jar'
 default['chef_scala_ephox']['app_user'] = 'java_app'
 default['chef_scala_ephox']['app_group'] = 'java_app'
 default['chef_scala_ephox']['app_port'] = 8009

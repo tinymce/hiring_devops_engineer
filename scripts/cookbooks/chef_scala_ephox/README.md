@@ -16,6 +16,8 @@ Deploys the ts-assembly-1.0.0.jar application included in this repository in the
 
 ### Attributes
 #### Application
+`default['chef_scala_ephox']['app_name']` sets the name of the application
+
 `default['chef_scala_ephox']['app_user']` sets the application user name (system account, non-login)
 
 `default['chef_scala_ephox']['app_group']` sets the application group name

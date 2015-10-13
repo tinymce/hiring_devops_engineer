@@ -12,6 +12,6 @@ expect fork
 
 script
    cd /opt/application
-   java -jar ts-assembly-1.0.0.jar
+   java -jar <%= node['chef_scala_ephox']['app_name'] %>
    emit javaapp_running
 end script

@@ -7,7 +7,7 @@
 
 # copy the java application to local storage - if vagrants linked storage is missing the vm will still operate
 execute "copy java application" do
-  command "mkdir -p /opt/application && cp /vagrant/application/ts-assembly-1.0.0.jar /opt/application/ts-assembly-1.0.0.jar"
+  command "mkdir -p /opt/application && cp /vagrant/application/#{node['chef_scala_ephox']['app_name']} /opt/application/#{node['chef_scala_ephox']['app_name']}"
   action :run
 end
 
