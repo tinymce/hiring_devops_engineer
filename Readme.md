@@ -7,9 +7,17 @@ This vagrant setup should be run on vagrant 1.7.4, there is an issue with earlie
 This implementation is running on openjdk, if you need features specific to either the oracle/ibm implementations modify the `override[:java][:openjdk_packages]` property in `scripts/cookbooks/chef_scala_ephox/attributes/default.rb`
 The 3 supplied routes all respond as expected.
 
-There are also a number of other properties relating to the setup of this VM in that same file (`scripts/cookbooks/chef_scala_ephox/attributes/default.rb`) that can be modified to suit.
+There are also a number of other properties relating to the setup of this VM in that same file (`scripts/cookbooks/chef_scala_ephox/attributes/default.rb`) that can be modified to suit, detailed in the readme.md in the chef cookbook `scripts/cookbooks/chef_scala_ephox`.
 
 Setup time will be ~5 minutes provided you already have the Ubuntu 14.04 x64 image locally, however the majority of this time is downloading (mainly aptitude updating and chef and java downloading) so YMMV.
+
+#### SSH
+
+There is a private (`scripts/id_rsa`) and public (`scripts/pub_ssh/id_rsa.pub`) key that i've supplied for the purposes of implementing SSH key based authentication that can be tested from the supplied repo without the need to supply your own. SSH keys should not be kept in git repo's, my recommended application for this in production should be to set the .gitignore file to ignore the public key in `scripts/pub_ssh/id_rsa.pub` and for the private key to not be in the repo at all.
+
+By doing this you can simply add the appropriate public key to the repo for deployment without it being included in source control.
+
+Vagrant also adds its own insecure key when the OS is deployed, as replaces this with a secure key that live (by default) in ~/.vagrant, the secondary key was added to show how this would work outside of vagrant (ie. deployed from a Chef Server).
 
 ## Instructions
 
