@@ -1,4 +1,4 @@
-# Devops exercize
+# Devops exercise
 
 Hello!
 
